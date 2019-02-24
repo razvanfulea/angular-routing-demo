@@ -1,0 +1,10 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/angular-routing-demo/node_modules
+
+/angular-routing-demo/dist
+/angular-routing-demo/tmp
+/angular-routing-demo/.vscode/*
+
+/angular-routing-demo/e2e
