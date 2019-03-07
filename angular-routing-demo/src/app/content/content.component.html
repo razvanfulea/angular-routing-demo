@@ -1,3 +1,10 @@
 <div>
     <h2>I am the CONTENT page!</h2>
+    <ul>
+        <li *ngFor="let v of values" >
+            <button class="btn btn-info" (click)="goToDetail(v)">
+                <span>I am element #{{v}}</span>
+            </button>
+        </li>
+    </ul>
 </div>
