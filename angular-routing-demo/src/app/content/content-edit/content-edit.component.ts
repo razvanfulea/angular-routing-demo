@@ -15,6 +15,7 @@ export class ContentEditComponent implements OnInit{
         // Constantly watch for route-params changes
         this.route.paramMap.subscribe(
             params => {
+                this.value = parseInt(params.get('id'));
                 console.log(params.get('id'))
             }
         )
