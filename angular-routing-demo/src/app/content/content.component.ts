@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContentService } from './content.service';
+import { Content } from './content';
 
 @Component({
     templateUrl: './content.component.html',
@@ -7,20 +9,22 @@ import { Router } from '@angular/router';
 })
 export class ContentComponent implements OnInit {
 
-    values: Array<number> = [];
+    contents: Array<Content> = [];
 
     constructor(
+        private contentService: ContentService,
         private _router: Router
     ){ }
 
     ngOnInit(){
-        for (let i = 1; i <= 10; i++){
-            this.values.push(i);
-        }
+        this.contentService.getContents().subscribe(
+            res => this.contents = res,
+            err => console.log(err)
+        )
     }
 
-    goToDetail(value: any){
-        this._router.navigate(['/content', value]);
+    goToDetail(contentId: any){
+        this._router.navigate(['/content', contentId]);
     }
 
 }

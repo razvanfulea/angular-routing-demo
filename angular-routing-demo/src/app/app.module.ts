@@ -8,6 +8,10 @@ import { AboutModule } from './about/about.module';
 import { HelpModule } from './help/help.module';
 import { ContentModule } from './content/content.module';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ContentData } from './content/content-data';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     HelpModule,
     ContentModule,
     PageNotFoundModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(ContentData, {delay: 1000}),
     AppRoutingModule,
   ],
   providers: [],

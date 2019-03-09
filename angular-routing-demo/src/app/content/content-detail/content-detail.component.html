@@ -1,4 +1,6 @@
 <div>
-    <h3>I am content detail #{{value}}</h3> 
-    <button class="btn btn-success" [routerLink]="['/content', value, 'edit']">Edit me!</button>
+    <h3>I am content detail #{{content.id}}</h3> 
+    <h4>Name: {{content.name}}</h4>
+    <h4>Description: {{content.description}}</h4>
+    <button class="btn btn-success" [routerLink]="['/content', content.id, 'edit']">Edit me!</button>
 </div>

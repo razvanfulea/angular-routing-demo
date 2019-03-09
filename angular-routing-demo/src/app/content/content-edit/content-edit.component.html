@@ -1,3 +1,14 @@
 <div>
-    <h3>I am the edit page #{{value}}</h3>
+    <h3>I am the edit page #{{content.id}}</h3>
+    <form (submit)="onSubmit()">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="content.name">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" [(ngModel)]="content.description">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
 </div>
