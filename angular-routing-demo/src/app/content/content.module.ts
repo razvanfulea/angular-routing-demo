@@ -10,19 +10,31 @@ import { ContentEditInfoComponent } from './content-edit/content-edit-info/conte
 import { ContentEditTagsComponent } from './content-edit/content-edit-tags/content-edit-tags.component';
 
 const routes = [
-    { path: 'content', component: ContentComponent },
-    { path: 'content/:id', component: ContentDetailComponent,
-        resolve: {resolvedContent: ContentResolver} },
     { 
-        path: 'content/:id/edit', 
-        component: ContentEditComponent,
-        resolve: {resolvedContent: ContentResolver},
+        path: 'content', 
         children: [
-            { path: '', redirectTo: 'info', pathMatch: 'full' },
-            { path: 'info', component: ContentEditInfoComponent },
-            { path: 'tags', component: ContentEditTagsComponent }
+            {
+                path: '',
+                component: ContentComponent
+            },
+            { 
+                path: ':id', 
+                component: ContentDetailComponent,
+                resolve: {resolvedContent: ContentResolver} 
+            },
+            { 
+                path: ':id/edit', 
+                component: ContentEditComponent,
+                resolve: {resolvedContent: ContentResolver},
+                children: [
+                    { path: '', redirectTo: 'info', pathMatch: 'full' },
+                    { path: 'info', component: ContentEditInfoComponent },
+                    { path: 'tags', component: ContentEditTagsComponent }
+                ]
+            }
         ]
-    }
+    },
+    
 ];
 
 @NgModule({
