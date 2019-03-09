@@ -1,10 +1,33 @@
 import { Component } from '@angular/core';
+import { myTransitionAnimation } from './app.animation';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  animations: [myTransitionAnimation]
 })
 export class AppComponent {
   title = 'angular-routing-demo';
+  loading = true;
+
+  constructor(
+    private router: Router
+  ) {
+    router.events.subscribe((routerEvent: Event) => {
+      this.checkRouterEvent(routerEvent);
+    });
+  }
+  
+  private checkRouterEvent(event: Event){
+    if (event instanceof NavigationStart){
+      this.loading = true;
+    }
+    if (event instanceof NavigationEnd ||
+      event instanceof NavigationCancel ||
+      event instanceof NavigationError){
+        this.loading = false;
+    }
+  }
 }

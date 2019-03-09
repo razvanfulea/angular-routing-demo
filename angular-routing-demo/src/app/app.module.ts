@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -19,7 +20,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
   ],
   imports: [
     BrowserModule,
-    HomeModule,
+    BrowserAnimationsModule,
+    HomeModule, 
     AboutModule,
     HelpModule,
     ContentModule,

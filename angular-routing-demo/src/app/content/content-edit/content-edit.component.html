@@ -1,8 +1,12 @@
 <div class="card">
     <div class="card-body">
         <div class="wizard">
-            <button class="btn btn-info" [routerLink]="['info']">Basic Info</button>
-            <button class="btn btn-info" [routerLink]="['tags']">Tags</button>
+            <button class="btn btn-info" [routerLink]="['info']" routerLinkActive="active">
+                Basic Info<span [ngClass]="{'fa fa-exclamation': !isValid('info')}" style="color: red"></span>
+            </button>
+            <button class="btn btn-info" [routerLink]="['tags']" routerLinkActive="active">
+                Tags<i [ngClass]="{'fa fa-exclamation': !isValid('tags')}" style="color: red"></i>
+            </button>
         </div>
         <router-outlet></router-outlet>
 
