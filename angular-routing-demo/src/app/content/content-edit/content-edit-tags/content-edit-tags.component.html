@@ -1,0 +1,14 @@
+<div>
+    <h3>Edit content #{{content.id}} tags</h3>
+    <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" disabled [ngModel]="content.id">
+    </div>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="content.name">
+    </div>
+    <div>
+        <label for="description">Some other inputs could be here</label>
+    </div>
+</div>
