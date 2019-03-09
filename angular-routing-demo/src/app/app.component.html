@@ -22,9 +22,28 @@
           routerLink="/help"
           routerLinkActive="active">Help</a>
     </li>
+    <li class="navbar-item" *ngIf="!isMessageDisplayed">
+      <a class="nav-link"
+          (click)="displayMessages()">
+          Show Messages
+      </a>
+    </li>
+    <li class="navbar-item" *ngIf="isMessageDisplayed">
+      <a class="nav-link"
+          (click)="hideMessages()">
+          Hide Messages
+      </a>
+    </li>
   </ul>
 </nav>
 <div class="container"
       [@myTransitionAnimation]="o.isActivated ? o.activatedRoute : ''">
-  <router-outlet #o="outlet"></router-outlet>
+  <div class="row">
+    <div class="col-8">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+    <div class="col-4">
+      <router-outlet name="popup"></router-outlet>
+    </div>
+  </div>
 </div>
