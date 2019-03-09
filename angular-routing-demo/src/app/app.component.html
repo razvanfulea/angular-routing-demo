@@ -1,19 +1,30 @@
+<span class="fa fa-spinner spinner" *ngIf="loading"></span>
+
 <nav class="navbar navbar-expand navbar-light">
   <ul class="navbar-nav">
     <li class="navbar-item">
-      <a class="nav-link" routerLink="/home">Home</a>
+      <a class="nav-link" 
+          routerLink="/home"
+          routerLinkActive="active">Home</a>
     </li>
     <li class="navbar-item">
-      <a class="nav-link" routerLink="/content">Content</a>
+      <a class="nav-link" 
+          routerLink="/content"
+          routerLinkActive="active">Content</a>
     </li>
     <li class="navbar-item">
-      <a class="nav-link" routerLink="/about">About</a>
+      <a class="nav-link" 
+          routerLink="/about"
+          routerLinkActive="active">About</a>
     </li>
     <li class="navbar-item">
-      <a class="nav-link" routerLink="/help">Help</a>
+      <a class="nav-link" 
+          routerLink="/help"
+          routerLinkActive="active">Help</a>
     </li>
   </ul>
 </nav>
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="container"
+      [@myTransitionAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <router-outlet #o="outlet"></router-outlet>
 </div>
