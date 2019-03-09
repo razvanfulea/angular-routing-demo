@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContentData } from './content/content-data';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MessageModule } from './message/message.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
     HomeModule, 
     AboutModule,
     HelpModule,
+    MessageModule,
     ContentModule,
     PageNotFoundModule,
     HttpClientModule,
