@@ -14,6 +14,7 @@ import { ContentData } from './content/content-data';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MessageModule } from './message/message.module';
+import { UnauthorizedModule } from './unauthorized/unauthorized.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MessageModule } from './message/message.module';
     MessageModule,
     ContentModule,
     PageNotFoundModule,
+    UnauthorizedModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ContentData, {delay: 1000}),
     AppRoutingModule,

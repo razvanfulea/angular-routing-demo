@@ -8,10 +8,13 @@ import { ContentResolver } from './content-resolver.service';
 import { ContentService } from './content.service';
 import { ContentEditInfoComponent } from './content-edit/content-edit-info/content-edit-info.component';
 import { ContentEditTagsComponent } from './content-edit/content-edit-tags/content-edit-tags.component';
+import { ActivationGuard } from '../guards/activation.guard';
+import { DeactivationGuard } from '../guards/deactivation.guard';
 
 const routes = [
     { 
         path: 'content', 
+        canActivate: [ActivationGuard],
         children: [
             {
                 path: '',
@@ -26,6 +29,7 @@ const routes = [
                 path: ':id/edit', 
                 component: ContentEditComponent,
                 resolve: {resolvedContent: ContentResolver},
+                canDeactivate: [DeactivationGuard],
                 children: [
                     { path: '', redirectTo: 'info', pathMatch: 'full' },
                     { path: 'info', component: ContentEditInfoComponent },

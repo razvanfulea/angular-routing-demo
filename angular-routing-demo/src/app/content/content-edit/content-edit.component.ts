@@ -8,9 +8,21 @@ import { Content } from '../content';
     styleUrls: ['./content-edit.component.scss']
 })
 export class ContentEditComponent implements OnInit{
-    content: Content;
 
     private dataIsValid: { [key: string]: boolean} = {};
+
+    private currentContent: Content;
+    private originalContent: Content;
+
+    get content(): Content {
+        return this.currentContent;
+    }
+
+    set content(value: Content){
+        this.currentContent = value;
+        // Clone the object to retain a copy
+        this.originalContent = { ...value };
+    }
 
     constructor(
         private contentService: ContentService,
@@ -27,10 +39,19 @@ export class ContentEditComponent implements OnInit{
         );
     }
 
+    reset() {
+        this.dataIsValid = null;
+        this.currentContent = null;
+        this.originalContent = null;
+    }
+
     onSave(){
         if (this.isValid()){
             this.contentService.save(this.content).subscribe(
-                _ => alert("Content saved!"),
+                _ => {
+                    this.reset();
+                    alert("Content saved!");
+                },
                 err => console.log(err)
             );
         } else {
@@ -63,6 +84,10 @@ export class ContentEditComponent implements OnInit{
         }
         return (this.dataIsValid &&
             Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
+    }
+
+    get isDirty(): boolean {
+        return JSON.stringify(this.originalContent) != JSON.stringify(this.currentContent);
     }
 
 } 
